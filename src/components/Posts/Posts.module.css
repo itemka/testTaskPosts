@@ -1,8 +1,9 @@
-.Posts{
+.Posts {
     display: flex;
     flex-direction: column;
 }
-.Post{
+
+.Post {
     padding: 20px;
     border-radius: 5px;
     margin: 20px 100px;
@@ -13,8 +14,18 @@
     justify-content: center;
     align-items: flex-start;
 }
-.postTitle{
+
+.postTitle {
     padding: 10px 0;
     margin-bottom: 5px;
     font-size: 1.3em;
+}
+.postBody{
+    text-align: left;
+}
+
+@media screen and (max-width: 800px) {
+    .Post {
+        margin: 20px 20px;
+    }
 }

@@ -6,7 +6,7 @@ const instance = axios.create({
 });
 
 export const PostAPI = {
-    getPartOfPost: (pageNumber) => instance.get(`posts?_page=${pageNumber}`).then(response => {
+    getPartOfPost: (pageNumber) => instance.get(`posts?userId=${pageNumber}`).then(response => {
         return response.data
     }),
 };

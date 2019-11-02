@@ -1,7 +1,7 @@
 import React from 'react';
 import Posts from "./Posts";
 import {connect} from "react-redux";
-import {getFirstPartOfPostThunk, getNextPartOfPostThunk} from "../Redux/PostsReducer";
+import {getFirstPartOfPostThunk, getNextPartOfPostThunk, setStartCurrentPage} from "../Redux/PostsReducer";
 import {getCurrentPage, getIsAuth, getLoading, getPosts} from "../Redux/Selectors";
 
 class PostsContainer extends React.Component {
@@ -11,6 +11,7 @@ class PostsContainer extends React.Component {
     }
 
     componentWillUnmount() {
+        this.props.setStartCurrentPage();
         window.removeEventListener('scroll', this.scrollFunction)
     }
 
@@ -31,4 +32,8 @@ let mapStateToProps = state => ({
     requestReturn: getLoading(state),
     isAuth: getIsAuth(state),
 });
-export default connect(mapStateToProps, {getFirstPartOfPostThunk, getNextPartOfPostThunk})(PostsContainer);
+export default connect(mapStateToProps, {
+    getFirstPartOfPostThunk,
+    getNextPartOfPostThunk,
+    setStartCurrentPage
+})(PostsContainer);

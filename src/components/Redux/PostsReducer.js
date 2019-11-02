@@ -4,35 +4,43 @@ const GET_FIRST_POSTS = `APP/POSTS/GET_FIRST_POSTS`;
 const GET_NEXT_POSTS = `APP/POSTS/GET_NEXT_POSTS`;
 const INCREMENT = `APP/POSTS/INCREMENT`;
 const REQUEST_RETURN = `APP/POSTS/REQUEST_RETURN`;
+const END = `APP/POSTS/END`;
 
 const getFirstPartOfPostAction = firstPosts => ({type: GET_FIRST_POSTS, firstPosts});
 const getNextPartOfPostAction = nextPosts => ({type: GET_NEXT_POSTS, nextPosts});
 const incrementAction = () => ({type: INCREMENT});
-// const requestReturnAction = (loading) => ({type: REQUEST_RETURN, loading});
+const requestReturnAction = (requestReturn) => ({type: REQUEST_RETURN, requestReturn});
+const endAction = (end) => ({type: END, end});
 
 export const getFirstPartOsPostThunk = pageNumber => dispatch => {
-    // dispatch(requestReturnAction(false));
-    let getPosts = PostAPI.getPartOfPost(pageNumber).then(data => {
-        // dispatch(requestReturnAction(true));
+    dispatch(requestReturnAction(false));
+    PostAPI.getPartOfPost(pageNumber).then(data => {
+        dispatch(requestReturnAction(true));
         dispatch(getFirstPartOfPostAction(data));
     });
-    return getPosts;
 };
 
-export const getNextPartOfPostThunk = pageNumber => dispatch => {
-    // dispatch(requestReturnAction(false));
-    let getPosts = PostAPI.getPartOfPost(pageNumber).then(data => {
-        // dispatch(requestReturnAction(true));
-        dispatch(incrementAction());
-        dispatch(getNextPartOfPostAction(data))
-    });
-    return getPosts;
+export const getNextPartOfPostThunk = pageNumber => (dispatch, getState) => {
+    if (!getState().postsStore.end) {
+        if (getState().postsStore.requestReturn) {
+            dispatch(requestReturnAction(false));
+            PostAPI.getPartOfPost(pageNumber).then(data => {
+                dispatch(requestReturnAction(true));
+                dispatch(incrementAction());
+                dispatch(getNextPartOfPostAction(data))
+            });
+        }
+    }
+    else {
+        dispatch(endAction(false))
+    }
 };
 
 let initialState = {
     posts: [],
     currentPage: 1,
-    requestReturn: false
+    requestReturn: true,
+    end: false
 };
 
 const PostsReducer = (state = initialState, action) => {
@@ -40,12 +48,15 @@ const PostsReducer = (state = initialState, action) => {
         case GET_FIRST_POSTS:
             return {
                 ...state,
-                posts: action.firstPosts
+                posts: action.firstPosts,
+                currentPage: 2
             };
         case GET_NEXT_POSTS:
+            console.log(action.nextPosts)
             return {
                 ...state,
-                posts: [...state.posts.map(item => ({...item})), ...action.nextPosts]
+                posts: [...state.posts.map(item => ({...item})), ...action.nextPosts],
+                end: !action.nextPosts.length
             };
         case INCREMENT:
             return {
@@ -53,7 +64,9 @@ const PostsReducer = (state = initialState, action) => {
                 currentPage: state.currentPage + 1
             };
         case REQUEST_RETURN:
-            return {...state, requestReturn: action.loading};
+            return {...state, requestReturn: action.requestReturn};
+        case END:
+            return {...state, end: action.end};
         default: {
             return state;
         }

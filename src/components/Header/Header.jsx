@@ -17,7 +17,8 @@ class Header extends React.Component {
         return (
             <div className={css.Header}>
                 {pageList}
-                {this.props.isAuth ? <NavLink to={`/login`} className={css.pageLink} onClick={this.props.logOutThunk}>log out</NavLink> : null }
+                {this.props.isAuth ? <NavLink to={`/login`} onClick={this.props.logOutThunk} className={css.pageLink}>log
+                    out</NavLink> : null}
             </div>
         );
     }

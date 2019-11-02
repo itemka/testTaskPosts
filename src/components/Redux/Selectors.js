@@ -1,15 +1,15 @@
 export const getPageList = state => {
-    return state.headerReducer.pageList;
+    return state.headerStore.pageList;
 };
 export const getCurrentPage = state => {
-    return state.postsReducer.currentPage;
+    return state.postsStore.currentPage;
 };
 export const getPosts = state => {
-    return state.postsReducer.posts;
+    return state.postsStore.posts;
 };
 export const getLoading = state => {
-    return state.postsReducer.requestReturn;
+    return state.postsStore.requestReturn;
 };
 export const getIsAuth = state => {
-    return state.authReducer.isAuth;
+    return state.authStore.isAuth;
 };

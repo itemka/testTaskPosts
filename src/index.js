@@ -13,9 +13,9 @@ import thunkMiddleware from 'redux-thunk';
 import {reducer as formReducer} from "redux-form";
 
 const CombineReducer = combineReducers({
-    headerReducer: HeaderReducer,
-    authReducer: AuthReducer,
-    postsReducer: PostsReducer,
+    headerStore: HeaderReducer,
+    authStore: AuthReducer,
+    postsStore: PostsReducer,
     form: formReducer,
 });
 const store = createStore(CombineReducer, applyMiddleware(thunkMiddleware));

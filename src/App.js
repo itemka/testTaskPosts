@@ -7,8 +7,14 @@ import Profile from "./components/Profile/Profile";
 import PostsContainer from "./components/Posts/PostsContainer";
 import {connect} from "react-redux";
 import LoginContainer from "./components/Login/LoginContainer";
+import {getIsAuth} from "./components/Redux/Selectors";
+import {restoreState} from "./components/Redux/AuthReducer";
 
 class App extends React.Component {
+    componentDidMount() {
+        this.props.restoreState();
+    }
+
     render() {
         return (
             <div className="App">
@@ -24,4 +30,5 @@ class App extends React.Component {
     }
 }
 
-export default connect(null, {})(App);
+const mapStateToProps = state => ({isAuth: getIsAuth(state)});
+export default connect(mapStateToProps, {restoreState})(App);

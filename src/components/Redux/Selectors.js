@@ -10,3 +10,6 @@ export const getPosts = state => {
 export const getLoading = state => {
     return state.postsReducer.requestReturn;
 };
+export const getIsAuth = state => {
+    return state.authReducer.isAuth;
+};

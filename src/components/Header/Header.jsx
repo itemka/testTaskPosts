@@ -2,7 +2,8 @@ import React from 'react';
 import css from './Header.module.css';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {getPageList} from "../Redux/Selectors";
+import {getIsAuth, getPageList} from "../Redux/Selectors";
+import {logOutThunk} from "../Redux/AuthReducer";
 
 class Header extends React.Component {
     render() {
@@ -16,10 +17,11 @@ class Header extends React.Component {
         return (
             <div className={css.Header}>
                 {pageList}
+                {this.props.isAuth ? <NavLink to={`/login`} className={css.pageLink} onClick={this.props.logOutThunk}>log out</NavLink> : null }
             </div>
         );
     }
 }
 
-let mapStateToProps = state => ({pageList: getPageList(state)});
-export default connect(mapStateToProps, {})(Header);
+let mapStateToProps = state => ({pageList: getPageList(state), isAuth: getIsAuth(state)});
+export default connect(mapStateToProps, {logOutThunk})(Header);

@@ -6,6 +6,7 @@ import {Route} from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import PostsContainer from "./components/Posts/PostsContainer";
 import {connect} from "react-redux";
+import LoginContainer from "./components/Login/LoginContainer";
 
 class App extends React.Component {
     render() {
@@ -16,7 +17,7 @@ class App extends React.Component {
                     <Route path={`/home`} render={() => <Home/>}/>
                     <Route path={`/posts`} render={() => <PostsContainer/>}/>
                     <Route path={`/profile`} render={() => <Profile/>}/>
-                    <Route path={`/profile`} render={() => <Profile/>}/>
+                    <Route path={`/login`} render={() => <LoginContainer/>}/>
                 </div>
             </div>
         )

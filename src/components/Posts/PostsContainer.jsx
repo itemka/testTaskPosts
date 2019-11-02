@@ -2,7 +2,8 @@ import React from 'react';
 import Posts from "./Posts";
 import {connect} from "react-redux";
 import {getFirstPartOsPostThunk, getNextPartOfPostThunk} from "../Redux/PostsReducer";
-import {getCurrentPage, getLoading, getPosts} from "../Redux/Selectors";
+import {getCurrentPage, getIsAuth, getLoading, getPosts} from "../Redux/Selectors";
+import {Redirect} from "react-router-dom";
 
 class PostsContainer extends React.Component {
     componentDidMount() {
@@ -21,7 +22,7 @@ class PostsContainer extends React.Component {
     };
 
     render() {
-        return <Posts {...this.props}/>
+        return (this.props.isAuth ? <Posts {...this.props}/> : <Redirect to={`/login`}/>);
     }
 }
 
@@ -29,5 +30,6 @@ let mapStateToProps = state => ({
     currentPage: getCurrentPage(state),
     posts: getPosts(state),
     loading: getLoading(state),
+    isAuth: getIsAuth(state),
 });
 export default connect(mapStateToProps, {getFirstPartOsPostThunk, getNextPartOfPostThunk})(PostsContainer);

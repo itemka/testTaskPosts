@@ -14,9 +14,7 @@ const Posts = props => {
     return (
         <div className={css.Posts}>
             {posts}
-
-                {props.requestReturn ? null : <div className={css.Post}><Preloader/></div>}
-
+            {props.requestReturn ? null : <div className={css.Post}><Preloader/></div>}
         </div>
     );
 };

@@ -1,6 +1,3 @@
-export const getPageList = state => {
-    return state.headerStore.pageList;
-};
 export const getCurrentPage = state => {
     return state.postsStore.currentPage;
 };

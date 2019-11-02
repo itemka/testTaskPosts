@@ -30,8 +30,7 @@ export const getNextPartOfPostThunk = pageNumber => (dispatch, getState) => {
                 dispatch(getNextPartOfPostAction(data))
             });
         }
-    }
-    else {
+    } else {
         dispatch(endAction(false))
     }
 };
@@ -52,7 +51,6 @@ const PostsReducer = (state = initialState, action) => {
                 currentPage: 2
             };
         case GET_NEXT_POSTS:
-            console.log(action.nextPosts)
             return {
                 ...state,
                 posts: [...state.posts.map(item => ({...item})), ...action.nextPosts],

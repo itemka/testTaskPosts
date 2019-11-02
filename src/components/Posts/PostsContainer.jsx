@@ -6,11 +6,9 @@ import {getCurrentPage, getIsAuth, getLoading, getPosts} from "../Redux/Selector
 import {Redirect} from "react-router-dom";
 
 class PostsContainer extends React.Component {
-    state = {yo: false}
     componentDidMount() {
         this.props.getFirstPartOsPostThunk(this.props.currentPage);
         window.addEventListener('scroll', this.scrollFunction);
-       // setTimeout(()=>{this.setState({yo: true})}, 4000);
     }
 
     componentWillUnmount() {
@@ -18,18 +16,13 @@ class PostsContainer extends React.Component {
     }
 
     scrollFunction = () => {
-        console.log(this.props.requestReturn);
-        console.log(window.innerHeight + window.pageYOffset);
-        console.log(document.body.offsetHeight);
-
-        //if (this.props.requestReturn && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
             this.props.getNextPartOfPostThunk(this.props.currentPage);
         }
     };
 
     render() {
-        return (this.props.isAuth ? <Posts {...this.props} yo={this.state.yo}/> : <Redirect to={`/login`}/>);
+        return (this.props.isAuth ? <Posts {...this.props}/> : <Redirect to={`/login`}/>);
     }
 }
 

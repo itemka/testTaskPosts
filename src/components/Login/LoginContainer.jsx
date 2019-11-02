@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {isAuthAction, logInThunk, logOutThunk, restoreState} from "../Redux/AuthReducer";
+import {isAuthAction, logInThunk, logOutThunk} from "../Redux/AuthReducer";
 import {getIsAuth} from "../Redux/Selectors";
 import {Redirect} from "react-router-dom";
 import LoginReducerForm from "./LoginForm";

@@ -24,7 +24,7 @@ export const saveState = (isAuth) => localStorage.setItem("localState", JSON.str
 export const restoreState = () => dispatch => {
     let stateAsString = localStorage.getItem("localState");
     // если не было ни одного сохранения, то будет null.
-    console.log(stateAsString, JSON.parse(stateAsString))
+    console.log(stateAsString, JSON.parse(stateAsString));
     if (stateAsString !== null) {
         dispatch(isAuthAction(JSON.parse(stateAsString)));
     }

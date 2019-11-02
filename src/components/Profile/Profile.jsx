@@ -1,14 +1,14 @@
 import React from 'react';
-import css from './Home.module.css';
+import css from './../Home/Home.module.css';
 
-const Home = () => {
+const Profile = () => {
     return (
         <div className={css.somePage}>
             <div>
-                Home Page
+                Page Profile
             </div>
         </div>
-    );
+    )
 };
 
-export default Home;
+export default Profile;

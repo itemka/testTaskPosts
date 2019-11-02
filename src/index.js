@@ -7,13 +7,11 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import AuthReducer from "./components/Redux/AuthReducer";
 import {Provider} from "react-redux";
 import {HashRouter} from "react-router-dom";
-import HeaderReducer from "./components/Redux/HeaderReducer";
 import PostsReducer from "./components/Redux/PostsReducer";
 import thunkMiddleware from 'redux-thunk';
 import {reducer as formReducer} from "redux-form";
 
 const CombineReducer = combineReducers({
-    headerStore: HeaderReducer,
     authStore: AuthReducer,
     postsStore: PostsReducer,
     form: formReducer,

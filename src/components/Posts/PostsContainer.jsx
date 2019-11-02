@@ -1,13 +1,12 @@
 import React from 'react';
 import Posts from "./Posts";
 import {connect} from "react-redux";
-import {getFirstPartOsPostThunk, getNextPartOfPostThunk} from "../Redux/PostsReducer";
+import {getFirstPartOfPostThunk, getNextPartOfPostThunk} from "../Redux/PostsReducer";
 import {getCurrentPage, getIsAuth, getLoading, getPosts} from "../Redux/Selectors";
-import {Redirect} from "react-router-dom";
 
 class PostsContainer extends React.Component {
     componentDidMount() {
-        this.props.getFirstPartOsPostThunk(this.props.currentPage);
+        this.props.getFirstPartOfPostThunk(this.props.currentPage);
         window.addEventListener('scroll', this.scrollFunction);
     }
 
@@ -22,7 +21,7 @@ class PostsContainer extends React.Component {
     };
 
     render() {
-        return (this.props.isAuth ? <Posts {...this.props}/> : <Redirect to={`/login`}/>);
+        return <Posts {...this.props}/>
     }
 }
 
@@ -32,4 +31,4 @@ let mapStateToProps = state => ({
     requestReturn: getLoading(state),
     isAuth: getIsAuth(state),
 });
-export default connect(mapStateToProps, {getFirstPartOsPostThunk, getNextPartOfPostThunk})(PostsContainer);
+export default connect(mapStateToProps, {getFirstPartOfPostThunk, getNextPartOfPostThunk})(PostsContainer);

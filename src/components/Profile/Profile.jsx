@@ -6,7 +6,8 @@ import {Redirect} from "react-router-dom";
 
 class Profile extends React.Component {
     render() {
-        return (this.props.isAuth ? <div className={css.somePage}><div>Profile Page</div></div>
+        return (this.props.isAuth
+            ? <div className={css.somePage}><div>Profile Page</div></div>
             : <Redirect to={`/login`}/>);
     };
 }

@@ -12,7 +12,7 @@ const incrementAction = () => ({type: INCREMENT});
 const requestReturnAction = (requestReturn) => ({type: REQUEST_RETURN, requestReturn});
 const endAction = (end) => ({type: END, end});
 
-export const getFirstPartOsPostThunk = pageNumber => dispatch => {
+export const getFirstPartOfPostThunk = pageNumber => dispatch => {
     dispatch(requestReturnAction(false));
     PostAPI.getPartOfPost(pageNumber).then(data => {
         dispatch(requestReturnAction(true));
@@ -48,13 +48,12 @@ const PostsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: action.firstPosts,
-                currentPage: 2
             };
         case GET_NEXT_POSTS:
             return {
                 ...state,
                 posts: [...state.posts.map(item => ({...item})), ...action.nextPosts],
-                end: !action.nextPosts.length
+                end: !action.nextPosts.length,
             };
         case INCREMENT:
             return {

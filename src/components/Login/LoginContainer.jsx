@@ -6,9 +6,6 @@ import {Redirect} from "react-router-dom";
 import LoginReducerForm from "./LoginForm";
 
 class LoginContainer extends React.Component {
-    componentDidMount() {
-    }
-
     render() {
         let onSubmit = formData => {
             console.log(formData);

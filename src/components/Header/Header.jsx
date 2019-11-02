@@ -6,13 +6,14 @@ import {getIsAuth} from "../Redux/Selectors";
 import {logOutThunk} from "../Redux/AuthReducer";
 
 class Header extends React.Component {
-    state={
+    state = {
         pagesList: [
-            {id: 1, pageName: 'Главная', pathToPage: '/home',},
+            {id: 1, pageName: 'Главная', pathToPage: '/',},
             {id: 2, pageName: 'Новости', pathToPage: '/posts',},
             {id: 3, pageName: 'Профиль', pathToPage: '/profile',},
         ]
     };
+
     render() {
         let pagesList = this.state.pagesList.map(item =>
             <NavLink key={item.id} to={`${item.pathToPage}`} className={css.pageLink}>
@@ -22,9 +23,12 @@ class Header extends React.Component {
 
         return (
             <div className={css.Header}>
-                {pagesList}
-                {this.props.isAuth ? <NavLink to={`/login`} onClick={this.props.logOutThunk} className={css.pageLink}>log
-                    out</NavLink> : null}
+                <div className={css.pagesList}>
+                    {pagesList}
+                </div>
+                {this.props.isAuth
+                    ? <NavLink to={`/login`} onClick={this.props.logOutThunk} className={css.logOut}>Log out</NavLink>
+                    : null}
             </div>
         );
     }

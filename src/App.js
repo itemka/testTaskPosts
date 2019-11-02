@@ -7,12 +7,11 @@ import Profile from "./components/Profile/Profile";
 import PostsContainer from "./components/Posts/PostsContainer";
 import {connect} from "react-redux";
 import LoginContainer from "./components/Login/LoginContainer";
-import {getIsAuth} from "./components/Redux/Selectors";
-import {restoreState} from "./components/Redux/AuthReducer";
+import {authorizationCheckThunk} from "./components/Redux/AuthReducer";
 
 class App extends React.Component {
     componentDidMount() {
-        this.props.restoreState();
+        this.props.authorizationCheckThunk();
     }
 
     render() {
@@ -20,7 +19,7 @@ class App extends React.Component {
             <div className="App">
                 <Header/>
                 <div>
-                    <Route path={`/home`} render={() => <Home/>}/>
+                    <Route exact path={`/`} render={() => <Home/>}/>
                     <Route path={`/posts`} render={() => <PostsContainer/>}/>
                     <Route path={`/profile`} render={() => <Profile/>}/>
                     <Route path={`/login`} render={() => <LoginContainer/>}/>
@@ -30,5 +29,4 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({isAuth: getIsAuth(state)});
-export default connect(mapStateToProps, {restoreState})(App);
+export default connect(null, {authorizationCheckThunk})(App);

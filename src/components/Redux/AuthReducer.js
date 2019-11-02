@@ -1,35 +1,34 @@
+import {stopSubmit} from "redux-form";
+
+
 const LOGIN = 'LOGIN';
 const IS_AUTH = 'IS_AUTH';
 
 
 export const logInAction = (email, password) => ({type: LOGIN, email, password});
 export const isAuthAction = isAuth => ({type: IS_AUTH, isAuth});
+export const saveState = (isAuth) => localStorage.setItem("localState", JSON.stringify(isAuth));
 
 
 export const logInThunk = (email, password) => dispatch => {
-    if (email === "Admin" || password === "123123") {
+    if (email === "Admin" && password === "123123") {
         dispatch(logInAction(email, password));
         dispatch(isAuthAction(true));
         saveState(true);
+    } else {
+        dispatch(stopSubmit("login", {_error: `Имя пользователя или пароль введены не верно`}))
     }
 };
 export const logOutThunk = () => dispatch => {
     dispatch(isAuthAction(false));
-    saveState(false)
+    saveState(false);
 };
-
-
-export const saveState = (isAuth) => localStorage.setItem("localState", JSON.stringify(isAuth));
-
-export const restoreState = () => dispatch => {
+export const authorizationCheckThunk = () => dispatch => {
     let stateAsString = localStorage.getItem("localState");
-    // если не было ни одного сохранения, то будет null.
-    console.log(stateAsString, JSON.parse(stateAsString));
-    if (stateAsString !== null) {
+    if (stateAsString !== null) { // если не было ни одного сохранения, то будет null.
         dispatch(isAuthAction(JSON.parse(stateAsString)));
     }
 };
-
 
 
 let initialState = {
@@ -37,6 +36,7 @@ let initialState = {
     password: null,
     isAuth: false,
 };
+
 
 const AuthReducer = (state = initialState, action) => {
     switch (action.type) {

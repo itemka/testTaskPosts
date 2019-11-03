@@ -1,4 +1,4 @@
-Выполненное [тестовое задание] (https://demo.codimd.org/s/r1KbU7_9r#%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0) загружено на GitHub с помощью [Create React App] (https://github.com/facebook/create-react-app).
+Выполненное [тестовое задание] (https://demo.codimd.org/s/r1KbU7_9r#Задача) загружено на GitHub с помощью [Create React App] (https://github.com/facebook/create-react-app).
 
 ***
 

@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/testTaskPosts/static/css/main.9c2941f7.chunk.css",
-    "main.js": "/testTaskPosts/static/js/main.b9978748.chunk.js",
-    "main.js.map": "/testTaskPosts/static/js/main.b9978748.chunk.js.map",
+    "main.js": "/testTaskPosts/static/js/main.b33a87fe.chunk.js",
+    "main.js.map": "/testTaskPosts/static/js/main.b33a87fe.chunk.js.map",
     "runtime-main.js": "/testTaskPosts/static/js/runtime-main.221995b6.js",
     "runtime-main.js.map": "/testTaskPosts/static/js/runtime-main.221995b6.js.map",
     "static/js/2.fa7a6f66.chunk.js": "/testTaskPosts/static/js/2.fa7a6f66.chunk.js",
     "static/js/2.fa7a6f66.chunk.js.map": "/testTaskPosts/static/js/2.fa7a6f66.chunk.js.map",
     "index.html": "/testTaskPosts/index.html",
-    "precache-manifest.3050ac05eedb8e7d22a2a940218bbb41.js": "/testTaskPosts/precache-manifest.3050ac05eedb8e7d22a2a940218bbb41.js",
+    "precache-manifest.56839d2c2157be9003e0d978c62773fd.js": "/testTaskPosts/precache-manifest.56839d2c2157be9003e0d978c62773fd.js",
     "service-worker.js": "/testTaskPosts/service-worker.js",
     "static/css/main.9c2941f7.chunk.css.map": "/testTaskPosts/static/css/main.9c2941f7.chunk.css.map",
     "static/media/Spinner42px.svg": "/testTaskPosts/static/media/Spinner42px.a1652bca.svg"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.221995b6.js",
     "static/js/2.fa7a6f66.chunk.js",
     "static/css/main.9c2941f7.chunk.css",
-    "static/js/main.b9978748.chunk.js"
+    "static/js/main.b33a87fe.chunk.js"
   ]
 }

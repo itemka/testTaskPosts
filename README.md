@@ -1,4 +1,4 @@
-Выполненное [тестовое задание] (https://demo.codimd.org/s/r1KbU7_9r#Задача) загружено на GitHub с помощью [Create React App] (https://github.com/facebook/create-react-app).
+Выполненное [тестовое задание](https://demo.codimd.org/s/r1KbU7_9r#Задача) загружено на GitHub с помощью [Create React App](https://github.com/facebook/create-react-app).
 
 ***
 
@@ -8,11 +8,11 @@
 
 ### `npm start`
 
-Для просмотра, откройте в браузере [http://localhost:3000] (http://localhost:3000)<br />
+Для просмотра, откройте в браузере [http://localhost:3000](http://localhost:3000)<br />
 
 2. Просмотреть работающее приложение по ссылке.
 
-### [testTaskPosts] (https://itemka.github.io/testTaskPosts/)
+### [testTaskPosts](https://itemka.github.io/testTaskPosts/)
 
 ***
 
